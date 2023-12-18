@@ -26,6 +26,7 @@ export interface Database {
           {
             foreignKeyName: "customers_id_fkey"
             columns: ["id"]
+            isOneToOne: true
             referencedRelation: "users"
             referencedColumns: ["id"]
           }
@@ -33,17 +34,17 @@ export interface Database {
       }
       liked_songs: {
         Row: {
-          created_at: string | null
+          created_at: string
           song_id: number
           user_id: string
         }
         Insert: {
-          created_at?: string | null
+          created_at?: string
           song_id: number
           user_id: string
         }
         Update: {
-          created_at?: string | null
+          created_at?: string
           song_id?: number
           user_id?: string
         }
@@ -51,12 +52,14 @@ export interface Database {
           {
             foreignKeyName: "liked_songs_song_id_fkey"
             columns: ["song_id"]
+            isOneToOne: false
             referencedRelation: "songs"
             referencedColumns: ["id"]
           },
           {
             foreignKeyName: "liked_songs_user_id_fkey"
             columns: ["user_id"]
+            isOneToOne: false
             referencedRelation: "users"
             referencedColumns: ["id"]
           }
@@ -106,6 +109,7 @@ export interface Database {
           {
             foreignKeyName: "prices_product_id_fkey"
             columns: ["product_id"]
+            isOneToOne: false
             referencedRelation: "products"
             referencedColumns: ["id"]
           }
@@ -141,7 +145,7 @@ export interface Database {
       songs: {
         Row: {
           author: string | null
-          created_at: string | null
+          created_at: string
           id: number
           image_path: string | null
           song_path: string | null
@@ -150,7 +154,7 @@ export interface Database {
         }
         Insert: {
           author?: string | null
-          created_at?: string | null
+          created_at?: string
           id?: number
           image_path?: string | null
           song_path?: string | null
@@ -159,7 +163,7 @@ export interface Database {
         }
         Update: {
           author?: string | null
-          created_at?: string | null
+          created_at?: string
           id?: number
           image_path?: string | null
           song_path?: string | null
@@ -170,6 +174,7 @@ export interface Database {
           {
             foreignKeyName: "songs_user_id_fkey"
             columns: ["user_id"]
+            isOneToOne: false
             referencedRelation: "users"
             referencedColumns: ["id"]
           }
@@ -231,12 +236,14 @@ export interface Database {
           {
             foreignKeyName: "subscriptions_price_id_fkey"
             columns: ["price_id"]
+            isOneToOne: false
             referencedRelation: "prices"
             referencedColumns: ["id"]
           },
           {
             foreignKeyName: "subscriptions_user_id_fkey"
             columns: ["user_id"]
+            isOneToOne: false
             referencedRelation: "users"
             referencedColumns: ["id"]
           }
@@ -268,6 +275,7 @@ export interface Database {
           {
             foreignKeyName: "users_id_fkey"
             columns: ["id"]
+            isOneToOne: true
             referencedRelation: "users"
             referencedColumns: ["id"]
           }
